@@ -55,3 +55,6 @@ const UndoRedo = () => {
 };
 
 export default UndoRedo;
+
+// can use it with useContext to manage state history across multiple components without prop drilling,
+// allowing for a more centralized and accessible state management solution.

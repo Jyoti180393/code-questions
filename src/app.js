@@ -4,6 +4,7 @@ import StateQues from "./StateQues";
 import UseCallBackHook from "./UseCallBackHook";
 import UseMemoHook from "./UseMemoHook";
 import UndoRedo from "./UseReducerHook";
+import UseIdHook from "./UseIdHook";
 
 const App = () => {
   return (
@@ -11,7 +12,8 @@ const App = () => {
       {/* <StateQues /> */}
       {/* <CallBackHook /> */}
       {/* <UseMemoHook /> */}
-      <UndoRedo />
+      {/* <UndoRedo /> */}
+      <UseIdHook />
     </div>
   );
 };
