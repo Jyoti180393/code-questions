@@ -1,6 +1,6 @@
 import { useCallback, useState, memo } from "react";
 
-const CallBackHook = () => {
+const UseCallBackHook = () => {
   const [count, setCount] = useState(1);
   const [text, setText] = useState("");
 
