@@ -8,6 +8,12 @@ const UseCallBackHook = () => {
 
   console.log("parent rendered");
 
+  //without useCallback
+  // const increment = () => {
+  //   console.log("increment function called with count:", count);
+  //   setCount((c) => c + 1);
+  // };
+
   const increment = useCallback(() => {
     console.log("increment function called with count:", count);
     setCount((c) => c + 1);
@@ -40,6 +46,12 @@ const UseCallBackHook = () => {
   );
 };
 
+// React.memo is a higher-order component that memoizes the result of a component rendering,
+// preventing unnecessary re-renders when the props have not changed.
+
+// must be used with useCallback and useMemo to prevent unnecessary
+// re-renders of child components due to Referential Equality differences
+// in functions and objects passed as props.
 const ChildFetch = memo(({ onIncrement }) => {
   console.log("child loaded");
   const [text, setText] = useState("");
@@ -58,13 +70,18 @@ const ChildFetch = memo(({ onIncrement }) => {
 
 export default UseCallBackHook;
 
-// here the useCallback hook is used to memoize the increment function,so that it is not recreated on every render of the parent component.
-//  This is important because if the increment function is recreated on every render,
-//  it will cause the child component to re-render unnecessarily, even if the count state has not changed.
-// By using useCallback, we ensure that the increment function is only created once and will not cause unnecessary
-// re-renders of the child component.
+// here the useCallback hook is used to memoize the increment function,
+// so that it is not recreated on every render of the parent component.
+// This is important because if the increment function is recreated on every render,
+// it will cause the child component to re-render unnecessarily,
+//  even if the count state has not changed.
+// By using useCallback, we ensure that the increment function is only created once
+// and will not cause unnecessary re-renders of the child component.
 
-// but the child component will render on text change because the parent component re-renders on text change
-// and the child component is a child of the parent component, so it will re-render as well.
+// but the child component will render on text change because the parent component
+//  re-renders on text change and the child component is a child of the parent component,
+// so it will re-render as well.
+
 // to stop the child component from re-rendering on text change,
-//  we can use React.memo to memoize the child component, so that it only re-renders when its props change.
+// we can use React.memo to memoize the child component,
+// so that it only re-renders when its props change.
